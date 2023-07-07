@@ -12,7 +12,10 @@ const Task = ({ task, onDeleteTask, onToggleDone }) => {
   return (
     <li>
       <input type="checkbox" checked={task.done} onChange={handleToggleDone} />
-      {task.name}
+      <span className={task.done ? "done" : ""}>{task.name}</span>
+      {task.description && (
+        <span className="description"> - {task.description}</span>
+      )}
       <button onClick={handleDeleteTask}>Eliminar</button>
     </li>
   );
