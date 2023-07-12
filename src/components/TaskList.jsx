@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Task from "./Task";
+import "./TaskList.css";
 
 const TaskList = ({ tasks, onAddTask, onDeleteTask, onToggleDone }) => {
   const [newTaskName, setNewTaskName] = useState("");
@@ -8,8 +9,8 @@ const TaskList = ({ tasks, onAddTask, onDeleteTask, onToggleDone }) => {
   const handleAddTask = (event) => {
     event.preventDefault();
 
-    if (newTaskName.length < 3) {
-      alert("El nombre de la tarea debe tener al menos 3 caracteres.");
+    if (newTaskName.trim() === "") {
+      alert("Por favor, ingresa un nombre para la tarea.");
       return;
     }
 
@@ -26,23 +27,36 @@ const TaskList = ({ tasks, onAddTask, onDeleteTask, onToggleDone }) => {
     setNewTaskDescription("");
   };
 
+  const handleDeleteTask = (taskId) => {
+    onDeleteTask(taskId);
+  };
+
+  const handleToggleDone = (taskId) => {
+    onToggleDone(taskId);
+  };
+
   return (
-    <div>
-      <form onSubmit={handleAddTask}>
-        <input
-          type="text"
-          name="taskName"
-          placeholder="Nombre de la tarea"
-          value={newTaskName}
-          onChange={(event) => setNewTaskName(event.target.value)}
-        />
-        <input
-          type="text"
-          name="taskDescription"
-          placeholder="Descripción de la tarea (opcional)"
-          value={newTaskDescription}
-          onChange={(event) => setNewTaskDescription(event.target.value)}
-        />
+    <div className="task-list-container">
+      <form className="task-form" onSubmit={handleAddTask}>
+        <div>
+          <label htmlFor="taskName">Nombre:</label>
+          <input
+            type="text"
+            id="taskName"
+            name="taskName"
+            value={newTaskName}
+            onChange={(event) => setNewTaskName(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="taskDescription">Descripción (opcional):</label>
+          <textarea
+            id="taskDescription"
+            name="taskDescription"
+            value={newTaskDescription}
+            onChange={(event) => setNewTaskDescription(event.target.value)}
+          ></textarea>
+        </div>
         <button type="submit">Agregar tarea</button>
       </form>
       <ul className="task-list">
@@ -50,8 +64,8 @@ const TaskList = ({ tasks, onAddTask, onDeleteTask, onToggleDone }) => {
           <Task
             key={task.id}
             task={task}
-            onDeleteTask={onDeleteTask}
-            onToggleDone={onToggleDone}
+            onDeleteTask={handleDeleteTask}
+            onToggleDone={handleToggleDone}
           />
         ))}
       </ul>
