@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
-import TaskList from "./components/TaskList";
 import Home from "./components/Home";
+import TaskList from "./components/TaskList";
 import SobreNosotros from "./components/SobreNosotros";
-import Menu from "./components/Menu";
+import Menus from "./components/Menus";
 import "./App.css";
 
 const App = () => {
@@ -29,10 +28,11 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Header />
-        <Menu />
+        <Menus />
+
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route
             path="/tareas"
             element={

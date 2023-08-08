@@ -2,8 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 60vh;
   font-family: Arial, sans-serif;
 }
 
@@ -18,7 +17,7 @@ body {
 .task-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .task-form input,
@@ -30,10 +29,11 @@ body {
   width: 100%;
 }
 
-.task-form button {
+/*.task-form button {
   background-color: #2980b9;
   color: #fff;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
+*/

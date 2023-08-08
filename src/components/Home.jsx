@@ -1,7 +1,15 @@
 import React from "react";
+import { Divider, Center } from "@chakra-ui/react";
 
 const Home = () => {
-  return <h2>Bienvenido a la Aplicación de Lista de Tareas</h2>;
+  return (
+    <div>
+      <Divider my="2" orientation="horizontal" />
+      <Center bg="LightSteelBlue" h="60px" color="black" fontSize={35}>
+        BIENVENIDO
+      </Center>
+    </div>
+  );
 };
 
 export default Home;

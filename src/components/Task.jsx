@@ -1,4 +1,5 @@
 import React from "react";
+import { Button, Checkbox } from "@chakra-ui/react";
 
 const Task = ({ task, onDeleteTask, onToggleDone }) => {
   const handleDeleteTask = () => {
@@ -10,14 +11,31 @@ const Task = ({ task, onDeleteTask, onToggleDone }) => {
   };
 
   return (
-    <li>
-      <input type="checkbox" checked={task.done} onChange={handleToggleDone} />
+    <ul>
+      <Checkbox
+        margin={2}
+        size="lg"
+        checked={task.done}
+        onChange={handleToggleDone}
+      />
+
       <span className={task.done ? "done" : ""}>{task.name}</span>
       {task.description && (
         <span className="description"> - {task.description}</span>
       )}
-      <button onClick={handleDeleteTask}>Eliminar</button>
-    </li>
+      <Button
+        size="sm"
+        height="18px"
+        width="100px"
+        border="2px"
+        borderColor="blue.500"
+        onClick={handleDeleteTask}
+        my={6}
+        margin={3}
+      >
+        Eliminar
+      </Button>
+    </ul>
   );
 };
 
